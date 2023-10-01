@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hex code selector</title>
+     
+    <style>
+      * {
+        font-family: "Courier New", Courier, monospace;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .row {
+        text-align: center;
+        background-color: yellow;
+        width: 300px;
+        height: 300px;
+      }
+      button {
+        display: block;
+        color: white;
+        margin: 20px auto;
+        background-color: orangered;
+        height: 2rem;
+        border: none;
+        border-radius: 5px;
+      }
+      p {
+        border: 2px solid black;
+        width: 30%;
+        margin: 0 auto;
+        background-color: aliceblue;
+      }
+      button:hover {
+        background-color: rgb(60, 119, 255);
+        transition: all 0.5s;
+      }
+
+      #upto {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>Hex code Generator</h1>
+        Select color: <input type="color" id="color" value="#111" />
+        <button id="get">Get Hexcode</button>
+        <p id="text">#111</p>
+        <button id="copy">copy</button>
+
+        <h5 id="upto"></h5>
+      </div>
+    </div>
+
+    <script>
+         var buttons = document.querySelector("#get").addEventListener("click",function(){
+          
+          var Hexcode = document.querySelector("#color").value;
+
+          document.querySelector("#text").innerText = Hexcode;
+          document.querySelector("*").style.background = Hexcode;
+          document.querySelector("#copy").addEventListener("click",function(){
+              navigator.clipboard.writeText(Hexcode);
+              document.querySelector("#upto").innerText = "copied"
+
+              setTimeout(function(){
+                  document.querySelector("#upto").innerText = ""
+              },2000)
+          })
+      })
+    </script>
+  </body>
+</html>
